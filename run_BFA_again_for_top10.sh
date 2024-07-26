@@ -26,20 +26,15 @@ model=deit_small_cifar100
 
 optimizer='AdamW'
 dataset='cifar100'
-test_batch_size=256 # number of training examples used in every iteration # ZX: batch size for testing set
+test_batch_size=256 # batch size for testing set
 
 seeds=(1 38 43 60 99 476 6611 5897 8411)
-# seeds=(6611 5897 8411 476)
-# seeds=(1 17 38 43 60 99)
-# seed 17 1 99 38 43 60 
 
-attack_sample_size=128 # number of data used for BFA  # ZX: batch size for training set
-n_iter=80  # ZX: # of iterations for cross-layer search = # of total bits flipped
+attack_sample_size=128 # batch size for training set
+n_iter=80  # of iterations for cross-layer search = # of total bits flipped
 k_top=10 # only check k_top weights with top gradient ranking in each layer
-# k_top=147456 for tiny
 
 epochs=0
-# vit tiny -> 25
 
 save_path=/data1/Xuan_vit_ckp/${DATE}/${dataset}_${model}_${epochs}_${optimizer}
 tb_path=/data1/Xuan_vit_ckp/${DATE}/${dataset}_${model}_${epochs}_${optimizer}_${quantize}/tb_log  #tensorboard log path
@@ -58,11 +53,9 @@ do
     		--optimizer ${optimizer}  | tee log_Adam/top10_${model}_seed${seed}.log
 done
 } &
-# this script is the same with run_BFA_all.sh except the log file name
-
 
 # n_iter: number of iteration to perform BFA
-# k_top: only check k_top weights with top gradient ranking in each layer (nb in paper)
+# k_top: only check k_top weights with top gradient ranking in each layer
 # attack_sample_size: number of data used for BFA (batch_size in main.py)
 # model: the ML model, related files can be found in models/vanilla_models. All models in this folder is pre-trained ResNet.
 
