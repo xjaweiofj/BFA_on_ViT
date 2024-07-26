@@ -28,12 +28,10 @@ optimizer='AdamW'
 dataset='cifar100'
 test_batch_size=256 # number of training examples used in every iteration # ZX: batch size for testing set
 seed=17
-# seed 17 1 99 38 43 60 
 
-attack_sample_size=128 # number of data used for BFA  # ZX: batch size for training set
-n_iter=100  # ZX: # of iterations for cross-layer search = # of total bits flipped
+attack_sample_size=128 # batch size for training set
+n_iter=100   # of iterations for cross-layer search = # of total bits flipped
 k_top=10 # only check k_top weights with top gradient ranking in each layer
-# k_top=147456 for tiny
 
 lr=0.0001
 epochs=100
