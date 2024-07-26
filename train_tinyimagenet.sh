@@ -20,29 +20,21 @@ if [ ! -d "$DIRECTORY" ]; then
 fi
 
 ############### Configurations ########################
-enable_tb_display=false # enable tensorboard displaymodel=deit_base_patch16_224_test 
+enable_tb_display=false 
 
 model=deit_base_cifar100
-#the model is still 100 classes, to successfully run this script on tiny img with 200 classes, need to create a model with 200 clases
 
 optimizer='AdamW'
 dataset='tiny_imagenet'
 test_batch_size=256 # number of training examples used in every iteration # ZX: batch size for testing set
 seed=17
-# seed 17 1 99 38 43 60 
 
-attack_sample_size=128 # number of data used for BFA  # ZX: batch size for training set
-n_iter=1  # ZX: # of iterations for cross-layer search = # of total bits flipped
+attack_sample_size=128 # batch size for training set
+n_iter=1  # of iterations for cross-layer search = # of total bits flipped
 k_top=10 # only check k_top weights with top gradient ranking in each layer
-# k_top=147456 for tiny
 
 lr=0.0001
 epochs=0
-# vit tiny -> 25  test acc 87
-# vit tiny -> 40  test acc 88
-# vit tiny (lr default) -> 200  test acc 90.96 (terminated in epoch 140)    ChatGPT said 100-200 is reasonable iterations
-# vit small (lr default) -> 250  test acc 88.77  ChatGPT said 150-300 is reasonable iterations 
-# vit base ChatGPT said 200-500 is reasonable iterations 
 
 save_path=/data1/Xuan_vit_ckp/${DATE}/${dataset}_${model}_${epochs}_${optimizer}
 tb_path=/data1/Xuan_vit_ckp/${DATE}/${dataset}_${model}_${epochs}_${optimizer}_${quantize}/tb_log  #tensorboard log path
@@ -59,7 +51,7 @@ python3 retrain.py --dataset ${dataset} --data_path /data1/tiny-imagenet-200/   
     --optimizer ${optimizer}  | tee log_Adam/train_attack_${model}_epoch${epochs}_lr1e-4_${dataset}.log
 } &
 # n_iter: number of iteration to perform BFA
-# k_top: only check k_top weights with top gradient ranking in each layer (nb in paper)
+# k_top: only check k_top weights with top gradient ranking in each layer 
 # attack_sample_size: number of data used for BFA (batch_size in main.py)
 # model: the ML model, related files can be found in models/vanilla_models. All models in this folder is pre-trained ResNet.
 
