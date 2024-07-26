@@ -1,0 +1,821 @@
+Current host is: june
+save path : /data1/Xuan_vit_ckp/2024-03-19/cifar10_deit_base_cifar10_0_AdamW
+{'arch': 'deit_base_cifar10', 'attack_sample_size': 128, 'data_path': '/data1/', 'dataset': 'cifar10', 'decay': 0.0001, 'enable_bfa': True, 'epochs': 0, 'evaluate': True, 'fine_tune': False, 'gammas': [0.1, 0.1], 'gpu_id': 0, 'k_top': 10, 'learning_rate': 0.001, 'manualSeed': 1, 'model_name': 'deit_base_cifar10', 'model_only': False, 'momentum': 0.9, 'n_iter': 1, 'ngpu': 2, 'optimize_step': False, 'optimizer': 'AdamW', 'print_freq': 1, 'reset_weight': True, 'resume': '', 'save_path': '/data1/Xuan_vit_ckp/2024-03-19/cifar10_deit_base_cifar10_0_AdamW', 'schedule': [80, 120], 'sparsity': 'None', 'sparsity_th': 0.0, 'start_epoch': 0, 'test_batch_size': 256, 'use_cuda': True, 'workers': 8}
+Random Seed: 1
+python version : 3.6.13 |Anaconda, Inc.| (default, Jun  4 2021, 14:25:59)  [GCC 7.5.0]
+torch  version : 1.8.1
+cudnn  version : 8005
+Files already downloaded and verified
+Files already downloaded and verified
+=> creating model 'deit_base_cifar10'
+====================== There are 10 class
+=================== Start changing layer type in deit_tiny_patch16_224_test in models/models.py =======================
+=================== Complete changing conv2d/linear layers to quantized layers =======================
+VisionTransformer(
+  (patch_embed): PatchEmbed(
+    (proj): quan_Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16), bias=False)
+    (norm): Identity()
+  )
+  (pos_drop): Dropout(p=0.0, inplace=False)
+  (norm_pre): Identity()
+  (blocks): Sequential(
+    (0): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (1): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (2): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (3): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (4): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (5): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (6): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (7): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (8): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (9): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (10): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (11): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+  )
+  (norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+  (fc_norm): Identity()
+  (head): quan_Linear(in_features=768, out_features=10, bias=True)
+)
+ckp dict key = dict_keys(['epoch', 'arch', 'state_dict', 'recorder', 'optimizer'])
+cls_token: shape = torch.Size([1, 1, 768]), number of weights = 768
+pos_embed: shape = torch.Size([1, 197, 768]), number of weights = 151296
+patch_embed.proj.weight: shape = torch.Size([768, 3, 16, 16]), number of weights = 589824
+patch_embed.proj.step_size: shape = torch.Size([]), number of weights = 1
+patch_embed.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.0.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.0.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.0.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.0.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.0.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.0.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.0.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.0.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.0.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.0.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.0.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.0.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.0.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.0.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.0.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.0.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.0.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.0.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.0.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.0.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.1.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.1.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.1.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.1.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.1.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.1.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.1.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.1.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.1.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.1.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.1.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.1.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.1.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.1.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.1.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.1.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.1.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.1.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.1.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.1.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.2.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.2.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.2.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.2.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.2.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.2.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.2.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.2.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.2.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.2.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.2.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.2.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.2.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.2.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.2.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.2.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.2.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.2.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.2.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.2.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.3.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.3.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.3.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.3.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.3.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.3.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.3.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.3.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.3.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.3.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.3.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.3.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.3.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.3.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.3.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.3.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.3.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.3.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.3.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.3.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.4.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.4.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.4.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.4.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.4.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.4.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.4.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.4.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.4.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.4.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.4.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.4.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.4.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.4.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.4.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.4.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.4.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.4.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.4.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.4.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.5.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.5.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.5.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.5.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.5.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.5.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.5.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.5.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.5.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.5.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.5.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.5.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.5.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.5.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.5.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.5.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.5.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.5.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.5.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.5.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.6.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.6.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.6.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.6.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.6.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.6.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.6.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.6.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.6.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.6.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.6.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.6.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.6.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.6.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.6.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.6.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.6.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.6.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.6.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.6.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.7.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.7.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.7.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.7.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.7.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.7.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.7.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.7.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.7.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.7.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.7.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.7.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.7.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.7.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.7.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.7.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.7.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.7.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.7.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.7.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.8.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.8.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.8.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.8.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.8.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.8.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.8.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.8.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.8.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.8.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.8.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.8.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.8.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.8.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.8.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.8.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.8.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.8.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.8.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.8.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.9.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.9.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.9.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.9.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.9.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.9.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.9.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.9.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.9.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.9.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.9.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.9.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.9.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.9.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.9.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.9.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.9.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.9.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.9.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.9.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.10.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.10.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.10.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.10.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.10.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.10.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.10.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.10.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.10.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.10.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.10.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.10.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.10.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.10.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.10.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.10.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.10.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.10.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.10.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.10.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.11.norm1.weight: shape = torch.Size([768]), number of weights = 768
+blocks.11.norm1.bias: shape = torch.Size([768]), number of weights = 768
+blocks.11.attn.qkv.weight: shape = torch.Size([2304, 768]), number of weights = 1769472
+blocks.11.attn.qkv.bias: shape = torch.Size([2304]), number of weights = 2304
+blocks.11.attn.qkv.step_size: shape = torch.Size([]), number of weights = 1
+blocks.11.attn.qkv.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.11.attn.proj.weight: shape = torch.Size([768, 768]), number of weights = 589824
+blocks.11.attn.proj.bias: shape = torch.Size([768]), number of weights = 768
+blocks.11.attn.proj.step_size: shape = torch.Size([]), number of weights = 1
+blocks.11.attn.proj.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.11.norm2.weight: shape = torch.Size([768]), number of weights = 768
+blocks.11.norm2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.11.mlp.fc1.weight: shape = torch.Size([3072, 768]), number of weights = 2359296
+blocks.11.mlp.fc1.bias: shape = torch.Size([3072]), number of weights = 3072
+blocks.11.mlp.fc1.step_size: shape = torch.Size([]), number of weights = 1
+blocks.11.mlp.fc1.b_w: shape = torch.Size([8, 1]), number of weights = 8
+blocks.11.mlp.fc2.weight: shape = torch.Size([768, 3072]), number of weights = 2359296
+blocks.11.mlp.fc2.bias: shape = torch.Size([768]), number of weights = 768
+blocks.11.mlp.fc2.step_size: shape = torch.Size([]), number of weights = 1
+blocks.11.mlp.fc2.b_w: shape = torch.Size([8, 1]), number of weights = 8
+norm.weight: shape = torch.Size([768]), number of weights = 768
+norm.bias: shape = torch.Size([768]), number of weights = 768
+head.weight: shape = torch.Size([10, 768]), number of weights = 7680
+head.bias: shape = torch.Size([10]), number of weights = 10
+head.step_size: shape = torch.Size([]), number of weights = 1
+head.b_w: shape = torch.Size([8, 1]), number of weights = 8
+{'patch_embed.proj': 589824, 'blocks.0.norm1': 1536, 'blocks.0.attn': 2362368, 'blocks.0.norm2': 1536, 'blocks.0.mlp': 4722432, 'blocks.1.norm1': 1536, 'blocks.1.attn': 2362368, 'blocks.1.norm2': 1536, 'blocks.1.mlp': 4722432, 'blocks.2.norm1': 1536, 'blocks.2.attn': 2362368, 'blocks.2.norm2': 1536, 'blocks.2.mlp': 4722432, 'blocks.3.norm1': 1536, 'blocks.3.attn': 2362368, 'blocks.3.norm2': 1536, 'blocks.3.mlp': 4722432, 'blocks.4.norm1': 1536, 'blocks.4.attn': 2362368, 'blocks.4.norm2': 1536, 'blocks.4.mlp': 4722432, 'blocks.5.norm1': 1536, 'blocks.5.attn': 2362368, 'blocks.5.norm2': 1536, 'blocks.5.mlp': 4722432, 'blocks.6.norm1': 1536, 'blocks.6.attn': 2362368, 'blocks.6.norm2': 1536, 'blocks.6.mlp': 4722432, 'blocks.7.norm1': 1536, 'blocks.7.attn': 2362368, 'blocks.7.norm2': 1536, 'blocks.7.mlp': 4722432, 'blocks.8.norm1': 1536, 'blocks.8.attn': 2362368, 'blocks.8.norm2': 1536, 'blocks.8.mlp': 4722432, 'blocks.9.norm1': 1536, 'blocks.9.attn': 2362368, 'blocks.9.norm2': 1536, 'blocks.9.mlp': 4722432, 'blocks.10.norm1': 1536, 'blocks.10.attn': 2362368, 'blocks.10.norm2': 1536, 'blocks.10.mlp': 4722432, 'blocks.11.norm1': 1536, 'blocks.11.attn': 2362368, 'blocks.11.norm2': 1536, 'blocks.11.mlp': 4722432, 'norm': 1536, 'head': 7690}
+=> network :
+ VisionTransformer(
+  (patch_embed): PatchEmbed(
+    (proj): quan_Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16), bias=False)
+    (norm): Identity()
+  )
+  (pos_drop): Dropout(p=0.0, inplace=False)
+  (norm_pre): Identity()
+  (blocks): Sequential(
+    (0): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (1): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (2): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (3): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (4): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (5): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (6): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (7): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (8): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (9): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (10): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+    (11): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): quan_Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): quan_Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (ls1): Identity()
+      (drop_path1): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): quan_Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): quan_Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+      (ls2): Identity()
+      (drop_path2): Identity()
+    )
+  )
+  (norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+  (fc_norm): Identity()
+  (head): quan_Linear(in_features=768, out_features=10, bias=True)
+)
+using AdamW as optimizer, lr = 0.001
+=> do not use any checkpoint for deit_base_cifar10 model
+There are 0 epochs in total in the loop in the main loop, will start with epoch=0
+========================= Evaluate the model before reset weight =======================
+  **Test** Prec@1 97.730 Prec@5 99.880 Prec@10 100.000 Error@1 2.270
+  **Test** Prec@1 97.730 Prec@5 99.880 Prec@10 100.000 Error@1 2.270
+k_top is set to 10
+Attack sample size is 128
+**********************************
+ite = 0 cross-layer search in main.py/perform_attack function
+self.loss_max = 1.1175870007207322e-08
+self.loss.item() = 1.1175870007207322e-08
+	ite=0, while loop in ./attack/BFA.py/progressive_bit_search: self.loss_max=1.1175870007207322e-08, self.loss.item()=1.1175870007207322e-08
+max_loss_module = module.blocks.9.mlp.fc1 in iteration 0 of while loop
+max_loss_module = module.blocks.9.mlp.fc1 after while loop
+Iteration: [001/001]   Attack Time 6.216 (6.216)  [2024-03-20 01:30:19]
+loss before attack: 0.0000
+loss after attack: 0.1681
+bit flips: 1
+hamming_dist: 1
+  **Test** Prec@1 95.790 Prec@5 99.860 Prec@10 100.000 Error@1 4.210
+iteration Time 8.451 (8.451)
+========================= Evaluate the model after attack =======================
+  **Test** Prec@1 95.790 Prec@5 99.860 Prec@10 100.000 Error@1 4.210
